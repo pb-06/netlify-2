@@ -5,13 +5,13 @@ import './App.css'
 
 // TODO - define Fruit interface properly
 interface Fruit {
-  id: number
+  id?: number
   name: string
-  healthy: boolean
+  healthy?: boolean
 }
 
 function App() {
-  const [fruits, setFruits] = useState([])
+  const [fruits, setFruits] = useState<Fruit[]>([])
 
   const handlePostClick = () => {
     fetch('/.netlify/functions/fruits', {
