@@ -19,10 +19,10 @@ export const handler = async (event, context) => {
         const newFruit = JSON.parse(event.body)
         console.log('Creating new fruit:', newFruit)
 
-        const result = await sql(`
+        const result = await sql`
             INSERT INTO fruits (name, healthy)
             VALUES (${newFruit.name}, ${newFruit.healthy}) RETURNING *;
-        `);
+        `;
         console.log('Inserted new fruit into database:', result)
 
         return {
