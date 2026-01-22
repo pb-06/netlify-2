@@ -1,6 +1,6 @@
 /* endpoint: /.netlify/functions/fruits */
-export const handler = async () => {
-    console.log('endpoint /.netlify/functions/fruits called')
+export const handler = async (event, context) => {
+    console.log('endpoint /.netlify/functions/fruits called', event, context)
     return {
         statusCode: 200,
         body: JSON.stringify([
