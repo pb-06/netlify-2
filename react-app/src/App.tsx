@@ -68,7 +68,13 @@ function App() {
         </p>
       </div>
       <p className="card">
-        {JSON.stringify(fruits)}
+        <ul>
+          {fruits.map(fruit =>
+            <li key={fruit.id}>
+              {fruit.name} {fruit.healthy ? '(Healthy)' : ''}
+            </li>
+          )}
+        </ul>
       </p>
     </>
   )
