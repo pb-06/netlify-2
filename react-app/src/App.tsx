@@ -3,6 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+// TODO - define Fruit interface properly
+interface Fruit {
+  id: number
+  name: string
+  healthy: boolean
+}
+
 function App() {
   const [fruits, setFruits] = useState([])
 
@@ -17,6 +24,8 @@ function App() {
       .then(res => res.json())
       .then(result => {
         console.log('POST response data', result)
+        // Update the fruits state with the new fruit added
+        setFruits([...fruits, result[0]])
       })
 
   }
