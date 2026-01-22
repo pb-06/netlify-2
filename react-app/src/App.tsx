@@ -12,8 +12,8 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id: 6, name: 'Grape', healthy: true }),
-    })
+      body: JSON.stringify({ name: 'Grape', healthy: true }),
+    }).then(console.log)
   }
 
   useEffect(() => {
