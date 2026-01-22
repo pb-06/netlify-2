@@ -71,7 +71,7 @@ function App() {
         <ul>
           {fruits.map(fruit =>
             <li key={fruit.id}>
-              {fruit.name} {fruit.healthy ? '(Healthy)' : ''}
+              {fruit.name}
             </li>
           )}
         </ul>
