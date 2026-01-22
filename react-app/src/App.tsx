@@ -13,7 +13,12 @@ function App() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name: 'Grape', healthy: true }),
-    }).then(console.log)
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log('POST response data', result)
+      })
+
   }
 
   useEffect(() => {
