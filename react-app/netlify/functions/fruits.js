@@ -17,6 +17,8 @@ export const handler = async (event, context) => {
 
     if (event.httpMethod == 'POST') {
         console.log('Received POST data:', event.body)
+        const newFruit = JSON.parse(event.body)
+        console.log('Creating new fruit:', newFruit)
         return {
             statusCode: 201,
             body: JSON.stringify({ message: 'Fruit created successfully' }),
