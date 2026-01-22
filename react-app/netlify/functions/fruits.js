@@ -1,6 +1,11 @@
+import { neon } from '@netlify/neon';
+
 /* endpoint: /.netlify/functions/fruits */
 export const handler = async (event, context) => {
-    console.log('endpoint /.netlify/functions/fruits called', event, context)
+    //console.log('endpoint /.netlify/functions/fruits called', event, context)
+    const sql = neon(); // automatically uses env NETLIFY_DATABASE_URL
+    const [fruits] = await sql`SELECT * FROM fruits LIMIT 50;`;
+    console.log('Fetched fruits from database:', fruits);
 
     if (event.httpMethod == 'GET') {
         return {
