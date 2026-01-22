@@ -4,13 +4,22 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
   const [fruits, setFruits] = useState([])
+
+  const handlePostClick = () => {
+    fetch('/.netlify/functions/fruits', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: 6, name: 'Grape', healthy: true }),
+    })
+  }
 
   useEffect(() => {
     const componentDidMount = async () => {
       try {
-        const fruitsDataJson = await fetch('/.netflify/functions/fruits')
+        const fruitsDataJson = await fetch('/.netlify/functions/fruits')
         console.log('fruitsDataJson', fruitsDataJson)
         const fruitsData = await fruitsDataJson.json()
         console.log('fruitsData', fruitsData)
@@ -37,8 +46,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={handlePostClick}>
+          POST /.netlify/functions/fruits
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
